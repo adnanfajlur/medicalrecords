@@ -1,0 +1,30 @@
+<section>
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Medical Records</h1>
+      </div>
+      <div class="col-md-4" style="margin-top: 2em">
+        <input class="form-control col-md-4" type="text" ng-model="vm.search" placeholder="Search" ng-change="vm.figureOutItemsToDisplay()" />
+      </div>
+    </div>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="medicalrecord in vm.pagedItems"
+       ui-sref="medicalrecords.view({ medicalrecordId: medicalrecord._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="medicalrecord.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="medicalrecord.user" ng-bind="medicalrecord.user.displayName"></span>
+        <span ng-if="!medicalrecord.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="medicalrecord.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.medicalrecords.$resolved && !vm.medicalrecords.length">
+    No Medicalrecords yet, why don't you <a ui-sref="medicalrecords.create">create one</a>?
+  </div>
+  <uib-pagination boundary-links="true" max-size="8" items-per-page="vm.itemsPerPage" total-items="vm.filterLength" ng-model="vm.currentPage" ng-change="vm.pageChanged()"></uib-pagination>
+</section>

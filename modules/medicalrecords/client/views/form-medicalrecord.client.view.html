@@ -1,0 +1,78 @@
+<section>
+  <div class="page-header">
+    <h2>{{vm.medicalrecord._id ? 'Edit Medical Record' : 'New Medical Record'}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Data Pribadi</h3>
+        </div>
+        <div class="panel-body">
+          <form name="vm.form.medicalrecordForm" class="form-horizontal" ng-submit="vm.save(vm.form.medicalrecordForm.$valid)" novalidate>
+            <fieldset>
+              <div class="form-group" show-errors>
+                <label class="control-label col-sm-3" for="name">Name</label>
+                <div class="col-sm-9">
+                  <input name="name" type="text" ng-model="vm.medicalrecord.name" id="name" class="form-control" required>
+                </div>
+                <div ng-messages="vm.form.medicalrecordForm.name.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Patient name is required.</p>
+                </div>
+              </div>
+              <div class="form-group" show-errors>
+                <label class="control-label col-sm-3" for="gender">Gender</label>
+                <div class="col-sm-9">
+                  <select name="gender" type="text" ng-model="vm.medicalrecord.gender" id="gender" class="form-control" required>
+                    <option>Male</option>
+                    <option>Famale</option>
+                  </select>
+                </div>
+                <div ng-messages="vm.form.medicalrecordForm.gender.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Gender is required.</p>
+                </div>
+              </div>
+              <div class="form-group" show-errors>
+                <label class="control-label col-sm-3" for="age">Age</label>
+                <div class="col-sm-9">
+                  <input name="age" type="number" ng-model="vm.medicalrecord.age" id="age" class="form-control" required>
+                </div>
+                <div ng-messages="vm.form.medicalrecordForm.age.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Patient age is required.</p>
+                </div>
+              </div>
+              <div class="form-group" show-errors>
+                <label class="control-label col-sm-3" for="address">Address</label>
+                <div class="col-sm-9">
+                  <input name="address" type="text" ng-model="vm.medicalrecord.address" id="address" class="form-control" required>
+                </div>
+                <div ng-messages="vm.form.medicalrecordForm.address.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Patient address is required.</p>
+                </div>
+              </div>
+              <div class="form-group" show-errors>
+                <label class="control-label col-sm-3" for="job">Job</label>
+                <div class="col-sm-9">
+                  <input name="job" type="text" ng-model="vm.medicalrecord.job" id="job" class="form-control" required>
+                </div>
+                <div ng-messages="vm.form.medicalrecordForm.job.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Patient job is required.</p>
+                </div>
+              </div>
+
+
+
+              <!-- submit -->
+              <div class="form-group">
+                <button type="submit" class="btn btn-default">{{vm.medicalrecord._id ? 'Update' : 'Create'}}</button>
+              </div>
+              <div ng-show="vm.error" class="text-danger">
+                <strong ng-bind="vm.error"></strong>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
